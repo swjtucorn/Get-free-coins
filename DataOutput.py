@@ -84,11 +84,3 @@ class DataOutput(object):
 		self.cx.close()
 
 
-#测试代码
-if __name__ == '__main__':
-	store = DataOutput()
-	data1 = [[1,2,3,4,False],[2,3,4,5,False],[3,4,5,6,True,8],[4,5,6,7,False],[5,6,7,8,False],[2,3,4,2,True,0]]
-	for i in range(len(data1)):
-		print data1[i]
-		store.store_data(data1[i])
-	store.output_end()
