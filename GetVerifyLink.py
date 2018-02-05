@@ -119,10 +119,3 @@ class GetVerifyLink(object):
 			soup = BeautifulSoup(content,'lxml')
 			link = soup.find_all('a')
 			return link[0].get_text()
-
-#测试代码
-if __name__ == '__main__':
-	getverifylink = GetVerifyLink()
-	email = 'um16984@163.com'
-	password = 'oak49356'
-	print getverifylink.getlink(email,password)
