@@ -18,7 +18,3 @@ class VerifyLink(object):
 			self.driver.quit()
 		else:
 			print 'The email without POP3 couldnt be verified,please verify artifically'
-
-if __name__ == '__main__':
-	verify = VerifyLink()
-	verify.verify('https://oju.io/t/email_verify.php?u=52455&h=b643318eb31ce6112111649f7fce30d11983d16c25266d76c5e97299dde39bb8069a51a52d73903340c3e58f219dac171f18076537af27f58165ddba49fd67b3')
