@@ -12,9 +12,13 @@ class VerifyLink(object):
 
 	def verify(self,url):
 		if url != None:
-			self.driver = webdriver.Chrome()
+			#将验证过程浏览器弹窗进行隐藏
+			self.options = webdriver.ChromeOptions()
+			self.options.add_argument('--headless')
+			self.options.add_argument('--disable-gpu')
+			self.driver = webdriver.Chrome(chrome_options = self.options)
 			self.driver.get(url)
-			self.driver.implicitly_wait(5)#控制间隔时间，等待浏览器反应
+			self.driver.implicitly_wait(5)
 			self.driver.quit()
 		else:
 			print 'The email without POP3 couldnt be verified,please verify artifically'
