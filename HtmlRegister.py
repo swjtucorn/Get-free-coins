@@ -16,8 +16,13 @@ class HtmlRegister(object):
 	def openhtml(self):
 		self.driver = webdriver.Chrome()
 		url = 'https://oju.io/t/cn/refer/KXyRzss5VEg'
-		self.driver.get(url)
-		self.driver.implicitly_wait(10)#控制间隔时间，等待浏览器反应
+		#控制间隔时间，等待浏览器反应,若无反应则退出脚本
+		try:
+			self.driver.get(url)
+			self.driver.implicitly_wait(10)
+		except:
+			print e,'Time Out : Your IP has been banned'
+			sys.exit()
 
 
 	def register(self,name,phone,email,password):
