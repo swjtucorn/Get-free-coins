@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import time
+import random
 
 class HtmlRegister(object):
 	def __init__(self):
@@ -14,11 +15,15 @@ class HtmlRegister(object):
 			"Mozilla/5.0 (Windows NT 5.2) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30")
 	
 	def openhtml(self):
-		self.driver = webdriver.Chrome()
-		url = 'https://oju.io/t/cn/refer/KXyRzss5VEg'
+		self.options = webdriver.ChromeOptions()
+		self.options.add_argument('--disable-gpu')
+		self.driver = webdriver.Chrome(chrome_options = self.options)
+		#此处为3个邀请链接，可自行增减，采用随机选择方式选择邀请链接
+		url = ['https://oju.io/t/cn/refer/K1GCJtyIJhS','https://oju.io/t/cn/refer/K4lwi0lehNz','https://oju.io/t/cn/refer/KmbpNQS6rFz']
+		i = random.randint(0,2)#随机生成索引
 		#控制间隔时间，等待浏览器反应,若无反应则退出脚本
 		try:
-			self.driver.get(url)
+			self.driver.get(url[i])
 			self.driver.implicitly_wait(10)
 		except:
 			print e,'Time Out : Your IP has been banned'
